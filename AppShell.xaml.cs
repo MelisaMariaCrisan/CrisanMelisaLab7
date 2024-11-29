@@ -1,4 +1,6 @@
-﻿namespace CrisanMelisaLab7
+﻿using System;
+
+namespace CrisanMelisaLab7
 {
     public partial class AppShell : Shell
     {
@@ -8,3 +10,4 @@
         }
     }
 }
+
