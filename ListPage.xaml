@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CrisanMelisaLab7"
              x:Class="CrisanMelisaLab7.ListPage"
              Title="ListPage">
     <StackLayout Margin="20">
-        <Editor Placeholder="Enter the description of the shopping list" Text="{Binding Description}" HeightRequest="100" />
+        <Editor Placeholder="Enter the description of the shopping list" Text="{Binding Description}" HeightRequest="50" />
+        <Editor Placeholder="Enter the description of the shopping list"
+        Text="{Binding Description}">
+            <Editor.Behaviors>
+                <local:ValidationBehaviour />
+            </Editor.Behaviors>
+        </Editor>
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -13,5 +21,20 @@
             <Button Text="Save" Clicked="OnSaveButtonClicked" />
             <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
         </Grid>
+        <ListView x:Name="listView"
+Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+       
+        </ListView>
+        <Button Text="Delete Item" 
+            MaximumWidthRequest="300"
+            BackgroundColor="Red"
+            TextColor="White"
+            Clicked="OnDeleteButtonClicked"/>
+        <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300" Clicked="OnChooseButtonClicked"/>
     </StackLayout>
 </ContentPage>
